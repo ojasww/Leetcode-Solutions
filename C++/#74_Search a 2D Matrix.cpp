@@ -19,3 +19,38 @@ public:
         return false;
     }
 };
+
+// Another Variation
+/**
+class Solution {
+public:
+    bool binarySearch(vector<int> v, int target){
+        int i=0, j=v.size()-1;
+
+        int mid = (i+j)/2;
+        
+        while(i<=j){
+            mid = (i+j)/2;
+            if(v[mid] == target) {return true;}
+            else{
+                if(v[mid]>target){
+                    j=mid-1;
+                } else {
+                    i=mid+1;
+                }
+            }    
+        }
+
+        return false;
+    }
+
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        for(auto& i: matrix) {
+            if(binarySearch(i, target)){
+                return true;
+            }
+        }
+        return false;
+    }
+};
+*/

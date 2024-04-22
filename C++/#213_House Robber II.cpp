@@ -1,22 +1,6 @@
 class Solution {
 public:
-    //cool dp problem
-    int rob(vector<int>& nums) {
-        int num2 = 0, num1 = 0;
-        for(int i=0; i<nums.size(); i++){
-            int temp = num1;
-            num1 = max(num2 + nums[i], num1);
-            num2 = temp;
-        }
-        return num1;
-    }
-};
-
-/**
-class Solution {
-public:
-    int rob(vector<int>& nums) {
-        // max(dp[i-2] + nums[i], dp[i-1])
+    int houseRobber1(vector<int>& nums) {
         vector<int> dp(nums.size(), 0);
 
         dp[0] = nums[0];
@@ -34,5 +18,13 @@ public:
 
         return maxValue;
     }
+
+    int rob(vector<int>& nums) {
+        if(nums.size() == 1) return nums[0];
+
+        vector<int> nums1(nums.begin(), nums.end()-1);
+        vector<int> nums2(nums.begin()+1, nums.end());
+
+        return max(houseRobber1(nums1), houseRobber1(nums2));
+    }
 };
-*/
